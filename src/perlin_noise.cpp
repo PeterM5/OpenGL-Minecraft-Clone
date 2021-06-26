@@ -36,6 +36,7 @@ PerlinNoise::~PerlinNoise()
 
 void PerlinNoise::generateSeedNoise2D()
 {
+    srand(time(0)); // Set seed
     for (int i = 0; i < m_output_width * m_output_height; i++) m_noise_seed_2D[i] = (float)rand() / (float)RAND_MAX;
 }
 
@@ -98,6 +99,7 @@ float * PerlinNoise::getNoiseSeed2D()
 
 void PerlinNoise::generateSeedNoise1D()
 {
+    srand(time(0)); // Set seed
     for (int i = 0; i < m_output_size; i++) m_noise_seed_1D[i] = (float)rand() / (float)RAND_MAX;
 }
 

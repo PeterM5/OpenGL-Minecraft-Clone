@@ -51,6 +51,7 @@ Cube::Cube(Cube && other)
     : m_VAO(other.m_VAO)
     , m_VBO(other.m_VBO)
     , m_UVBO(other.m_UVBO)
+    , m_LBO(other.m_LBO)
     , m_IDO(other.m_IDO)
     , m_texture_atlas(other.m_texture_atlas)
     , m_xpos(other.m_xpos)
@@ -60,6 +61,7 @@ Cube::Cube(Cube && other)
     other.m_VAO = 0;
     other.m_VBO = 0;
     other.m_UVBO = 0;
+    other.m_LBO = 0;
     other.m_IDO = 0;
 }
 
@@ -68,6 +70,7 @@ Cube::~Cube()
     glDeleteBuffers(1, &m_VBO);
     glDeleteBuffers(1, &m_IDO);
     glDeleteBuffers(1, &m_UVBO);
+    glDeleteBuffers(1, &m_LBO);
     glDeleteBuffers(1, &m_VAO);
 }
 
@@ -112,10 +115,10 @@ void Cube::Render(GLuint MVP_handle, glm::mat4 &VP)
 
     // 3rd attribute buffer: Light values
     glEnableVertexAttribArray(2);
-    glBindBuffer(GL_ARRAY_BUFFER, m_UVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_LBO);
     glVertexAttribPointer(
-        1,                  // attribute. No particular reason for 0, but must match the layout in the shader.
-        2,                  // size: U+V => 2
+        2,                  // attribute. No particular reason for 0, but must match the layout in the shader.
+        1,                  // size: one light values per vertex 
         GL_FLOAT,           // type
         GL_FALSE,           // normalized?
         0,                  // stride
@@ -131,5 +134,6 @@ void Cube::Render(GLuint MVP_handle, glm::mat4 &VP)
 
     glDisableVertexAttribArray(0);
     glDisableVertexAttribArray(1);
+    glDisableVertexAttribArray(2);
 
 }

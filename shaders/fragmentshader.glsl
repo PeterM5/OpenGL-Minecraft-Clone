@@ -3,6 +3,8 @@
 // Interpolated values from the vertex shaders
 in vec2 UV;
 
+in float L;
+
 // Ouput data
 out vec3 color;
 
@@ -11,7 +13,7 @@ uniform sampler2D textureSampler;
 
 void main()
 {
-	color = texture(textureSampler, UV).rgb;
+	color = texture(textureSampler, UV).rgb * L;
 	//color = vec3(1,0,0);
 
 }

@@ -36,56 +36,64 @@ static const GLfloat cube_vertex_data[72] {
     1, 1, 1, //14
     1, 0, 1, //15
 
-    // Top
+    // Bottom 
     0, 1, 0, //16
     0, 1, 1, //17
     1, 1, 1, //18
     1, 1, 0, //19
 
-    // Bottom
+    // Top 
     0, 0, 0, //20
     0, 0, 1, //21
     1, 0, 1, //22
     1, 0, 0  //23
 };
 
+static const GLfloat CUBE_LIGHT_TOP = 0.8f;
+static const GLfloat CUBE_LIGHT_BOTTOM = 0.5f;
+static const GLfloat CUBE_LIGHT_LEFT = 0.5f;
+static const GLfloat CUBE_LIGHT_RIGHT = 0.5f;
+static const GLfloat CUBE_LIGHT_BACK = 0.5f;
+static const GLfloat CUBE_LIGHT_FRONT = 0.5f;
+
+
 static const GLfloat cube_light_data[24]
 {
     // Front
-    0.5f,
-    0.5f,
-    0.5f,
-    0.5f,
+    CUBE_LIGHT_FRONT,
+    CUBE_LIGHT_FRONT,
+    CUBE_LIGHT_FRONT,
+    CUBE_LIGHT_FRONT,
 
-    // Black
-    0.5f,
-    0.5f,
-    0.5f,
-    0.5f,
+    // Back
+    CUBE_LIGHT_BACK,
+    CUBE_LIGHT_BACK,
+    CUBE_LIGHT_BACK,
+    CUBE_LIGHT_BACK,
 
     // Left
-    0.5f,
-    0.5f,
-    0.5f,
-    0.5f,
+    CUBE_LIGHT_LEFT,
+    CUBE_LIGHT_LEFT,
+    CUBE_LIGHT_LEFT,
+    CUBE_LIGHT_LEFT,
 
     // Right
-    0.5f,
-    0.5f,
-    0.5f,
-    0.5f,
+    CUBE_LIGHT_RIGHT,
+    CUBE_LIGHT_RIGHT,
+    CUBE_LIGHT_RIGHT,
+    CUBE_LIGHT_RIGHT,
 
-    // Top
-    1.0f,
-    1.0f,
-    1.0f,
-    1.0f,
+    // Bottom 
+    CUBE_LIGHT_BOTTOM,
+    CUBE_LIGHT_BOTTOM,
+    CUBE_LIGHT_BOTTOM,
+    CUBE_LIGHT_BOTTOM,
 
-    // Bottom
-    0.1f,
-    0.1f,
-    0.1f,
-    0.1f
+    // Top 
+    CUBE_LIGHT_TOP,
+    CUBE_LIGHT_TOP,
+    CUBE_LIGHT_TOP,
+    CUBE_LIGHT_TOP
 };
 
 
@@ -114,13 +122,13 @@ static const GLfloat cube_uv_buffer_data[48] {
     1, 1,
     1, 0,
 
-    // Top
+    // Bottom 
     0, 0,
     0, 1,
     1, 1,
     1, 0,
 
-    // Bottom
+    // Top 
     0, 1,
     0, 0,
     1, 0,
@@ -144,11 +152,11 @@ static const GLushort cube_indices_data[36] {
     14, 13, 12,
     15, 14, 12,
 
-    // Top
+    // Bottom 
     18, 17, 16,
     19, 18, 16,
 
-    // Bottom
+    // Top 
     20, 21, 22,
     22, 23, 20
     
