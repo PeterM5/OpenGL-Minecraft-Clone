@@ -10,7 +10,7 @@
 #include "texture.cpp"
 #include "text.h"
 
-
+// Ordering of coords dimensions: XYZ
 static const GLfloat cube_vertex_data[72] {
     // Front
     0, 0, 0, //0
@@ -97,7 +97,7 @@ static const GLfloat cube_light_data[24]
 };
 
 
-static const GLfloat cube_uv_buffer_data[48] {
+static const GLfloat cube_uv_data[48] {
     // Front
     0, 0,
     0, 1,

@@ -83,16 +83,19 @@ void Game::Init()
     PerlinNoise pn(256, 256, 7);
 
     // Create cubes
-    int size = 64;
+    int size = 1;
     std::vector<Cube> cubes;
     cubes.reserve(size*size);
     for (int y=0; y<size; y++) {
         for (int x=0; x<size; x++) {
-            float height = floor((pn.getPerlinNoise2D()[y * 256 * 2 + x*2] - pn.getMaxPerlinValue()) * 10 / (pn.getMaxPerlinValue() - pn.getMinPerlinValue()));
+            //float height = floor((pn.getPerlinNoise2D()[y * 256 * 2 + x*2] - pn.getMaxPerlinValue()) * 10 / (pn.getMaxPerlinValue() - pn.getMinPerlinValue()));
+            float height = -1;
             unsigned int item_id = 2;
-            cubes.push_back(Cube(shader.getProgramID(), &texture_atlas, item_id, (float)x, height,(float)y));
+            cubes.push_back(Cube(shader.getProgramID(), &texture_atlas, item_id, (float)0, height,(float)0));
         }
     }
+
+    Chunk chunk(shader.getProgramID(), &texture_atlas, 0, 0, 0);
 
     Controller controller;
 
@@ -128,6 +131,8 @@ void Game::Init()
                 cubes[y*size + x].Render(MatrixID, VP);
             }
         }
+
+        chunk.Render(MatrixID, VP);
 
         //quad.Render(MatrixID, VP);
 

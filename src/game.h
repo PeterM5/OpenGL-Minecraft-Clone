@@ -6,6 +6,7 @@
 #include "shader.cpp"
 #include "quad.cpp"
 #include "cube.cpp"
+#include "chunk.cpp"
 #include "controller.cpp"
 #include "text.cpp"
 #include "KeyboardInput.h"

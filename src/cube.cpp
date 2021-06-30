@@ -16,9 +16,9 @@ Cube::Cube(GLuint programID, TextureAtlas * texture_atlas, unsigned int id, floa
     glBufferData(GL_ARRAY_BUFFER, sizeof(cube_vertex_data), cube_vertex_data, GL_STATIC_DRAW);
 
     // Obtain UVs from texture atlas
-    unsigned int length = sizeof(cube_uv_buffer_data)/sizeof(cube_uv_buffer_data[0]);
+    unsigned int length = sizeof(cube_uv_data)/sizeof(cube_uv_data[0]);
     GLfloat uvs[length];
-    std::copy(cube_uv_buffer_data, cube_uv_buffer_data + length, uvs);
+    std::copy(cube_uv_data, cube_uv_data + length, uvs);
     if (id == 2)
     {
         m_texture_atlas->TransformUV(uvs, 2, 2, 2, 2, 0, 1);
@@ -81,7 +81,7 @@ void Cube::Render(GLuint MVP_handle, glm::mat4 &VP)
     // Send our transformation to the currently bound shader,
     // in the "MVP" uniform
     glm::mat4 transform = glm::translate<float>(glm::vec3(m_xpos/2, m_ypos/2, m_zpos/2)) 
-    * glm::scale<float>(glm::vec3(0.5f,0.5f,0.5f));
+    * glm::scale<float>(glm::vec3(0.2f,0.2f,0.2f));
     glm::mat4 MVP = VP * transform;
     
     glUniformMatrix4fv(MVP_handle, 1, GL_FALSE, &MVP[0][0]);
@@ -118,7 +118,7 @@ void Cube::Render(GLuint MVP_handle, glm::mat4 &VP)
     glBindBuffer(GL_ARRAY_BUFFER, m_LBO);
     glVertexAttribPointer(
         2,                  // attribute. No particular reason for 0, but must match the layout in the shader.
-        1,                  // size: one light values per vertex 
+        1,                  // size: one light value per vertex 
         GL_FLOAT,           // type
         GL_FALSE,           // normalized?
         0,                  // stride
